@@ -88,9 +88,8 @@ public class Create extends AppCompatActivity {
                 String courseYr = courseyearField.getText().toString();
 
                 if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(courseYr) && !TextUtils.isEmpty(selectedDepartment)){
-                    String userId = usersRef.push().getKey();
                     userData newUser = new userData(id,name, courseYr, selectedDepartment);
-                    usersRef.child(userId).setValue(newUser)
+                    usersRef.child(id).setValue(newUser)
                             .addOnCompleteListener(task -> {
                                 if (task.isSuccessful()){
                                     Toast.makeText(Create.this, "User Registered", Toast.LENGTH_SHORT).show();
